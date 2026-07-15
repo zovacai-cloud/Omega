@@ -664,4 +664,437 @@
           <div class="plan-desc">Full syllabus access, one month at a time. Good for trying things out.</div>
         </div>
         <div class="plan-card recommended selected" onclick="selectPlan(this)">
-   
+          <div class="plan-duration">6 Months</div>
+          <div class="plan-price">₹6,999<sub>total</sub></div>
+          <div class="plan-desc">Full syllabus, doubt sessions included, priced lower per month.</div>
+        </div>
+        <div class="plan-card" onclick="selectPlan(this)">
+          <div class="plan-duration">12 Months</div>
+          <div class="plan-price">₹11,499<sub>total</sub></div>
+          <div class="plan-desc">Full year coverage for exam-cycle students. Best value per month.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTER MODE -->
+    <div id="chapterMode" style="display:none;">
+      <div class="chapter-list">
+        <div class="chapter-row">
+          <div class="checkbox checked" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Electrostatics</div>
+          <div class="chapter-price">₹399</div>
+        </div>
+        <div class="chapter-row">
+          <div class="checkbox" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Current Electricity</div>
+          <div class="chapter-price">₹399</div>
+        </div>
+        <div class="chapter-row">
+          <div class="checkbox" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Laws of Motion</div>
+          <div class="chapter-price">₹399</div>
+        </div>
+        <div class="chapter-row">
+          <div class="checkbox" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Optics &amp; Wave Motion</div>
+          <div class="chapter-price">₹399</div>
+        </div>
+        <div class="chapter-row">
+          <div class="checkbox" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Human Physiology (Biology)</div>
+          <div class="chapter-price">₹349</div>
+        </div>
+        <div class="chapter-row">
+          <div class="checkbox" onclick="toggleChapter(this)"></div>
+          <div class="chapter-name">Genetics &amp; Evolution (Biology)</div>
+          <div class="chapter-price">₹349</div>
+        </div>
+      </div>
+
+      <div class="price-summary">
+        <div>
+          <div class="label">1 chapter selected</div>
+          <div class="amount" id="chapterTotal">₹399</div>
+        </div>
+        <button class="btn small" onclick="goTo('confirm-enroll')">Proceed to payment</button>
+      </div>
+    </div>
+
+    <div class="btn-row" id="fullModeButtonRow">
+      <button class="btn ghost small" onclick="goTo(3)">← Back</button>
+      <button class="btn" onclick="goTo('confirm-enroll')">Proceed to payment →</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 4B: Doubt session topic picker -->
+  <section class="screen" id="screen-4b" style="display:none;">
+    <div class="screen-label">Screen 4B · Doubt session</div>
+    <h1 class="screen-title">Which topics are you stuck on?</h1>
+    <p class="screen-sub">Pick as many as you need. This is the screen that feeds the clustering logic — as each topic is picked, the system checks who else booked it this week and prompts a join, live.</p>
+
+    <div style="margin-bottom:22px;">
+      <label style="font-size:12px; color:var(--ink-soft); font-weight:500; display:block; margin-bottom:10px;">Subject</label>
+      <div class="tile-grid" style="grid-template-columns:repeat(4,1fr);">
+        <button class="tile" style="padding:14px;" onclick="selectSubject(this,'Physics')">
+          <span class="tile-name" style="font-size:13px;">Physics</span>
+        </button>
+        <button class="tile" style="padding:14px;" onclick="selectSubject(this,'Chemistry')">
+          <span class="tile-name" style="font-size:13px;">Chemistry</span>
+        </button>
+        <button class="tile" style="padding:14px;" onclick="selectSubject(this,'Biology')">
+          <span class="tile-name" style="font-size:13px;">Biology</span>
+        </button>
+        <button class="tile" style="padding:14px;" onclick="selectSubject(this,'Zoology')">
+          <span class="tile-name" style="font-size:13px;">Zoology</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="topicSection" style="display:none;">
+      <label style="font-size:12px; color:var(--ink-soft); font-weight:500; display:block; margin-bottom:10px;">Topics in <span id="subjectLabel"></span></label>
+      <div class="topic-grid" id="topicGrid"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn ghost small" onclick="goTo(3)">← Back</button>
+      <button class="btn" id="btn-doubt-continue" disabled onclick="goTo('confirm-doubt')">Continue →</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 5a: Enrollment confirmation -->
+  <section class="screen" id="screen-confirm-enroll" style="display:none;">
+    <div class="screen-label">Screen 5 · Confirmation</div>
+    <h1 class="screen-title">You're enrolled</h1>
+    <p class="screen-sub">A plain summary of what was booked — no jargon, nothing left ambiguous about what happens next.</p>
+
+    <div class="confirm-box">
+      <div class="confirm-check">✓</div>
+      <div class="confirm-row"><span class="k">Student</span><span class="v" id="ce-name">Ananya Sharma</span></div>
+      <div class="confirm-row"><span class="k">Course</span><span class="v" id="ce-stream">NEET</span></div>
+      <div class="confirm-row"><span class="k">Plan</span><span class="v" id="ce-plan">6 Month — Full Course</span></div>
+      <div class="confirm-row"><span class="k">Amount paid</span><span class="v" id="ce-amount">₹6,999</span></div>
+    </div>
+
+    <div class="whatsapp-note">
+      <span>💬</span>
+      <div><b>Next:</b> An invite to the NEET WhatsApp doubt group is sent to 98765 43210 within a few minutes. Doubts can be posted there any day — tutors and fellow students reply, and live sessions happen every Saturday &amp; Sunday.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn ghost small" onclick="goTo(1)">Start another demo entry →</button>
+      <span></span>
+    </div>
+  </section>
+
+  <!-- SCREEN 5b: Doubt confirmation -->
+  <section class="screen" id="screen-confirm-doubt" style="display:none;">
+    <div class="screen-label">Screen 5 · Confirmation</div>
+    <h1 class="screen-title">Your doubt session is booked</h1>
+    <p class="screen-sub">The exact time isn't shown yet — it can't be, until the system sees the full week's requests and clusters them. That's what the admin screen below solves.</p>
+
+    <div class="confirm-box">
+      <div class="confirm-check">✓</div>
+      <div class="confirm-row"><span class="k">Student</span><span class="v" id="cd-name">Ananya Sharma</span></div>
+      <div class="confirm-row"><span class="k">Course</span><span class="v" id="cd-stream">NEET</span></div>
+      <div class="confirm-row"><span class="k">Topics requested</span><span class="v" id="cd-topics">Electrostatics</span></div>
+      <div class="confirm-row"><span class="k">Session window</span><span class="v">This Sat–Sun</span></div>
+    </div>
+
+    <div class="whatsapp-note">
+      <span>💬</span>
+      <div>Added to the NEET WhatsApp doubt group. Exact slot time is confirmed 24 hours before the session, once all requests for the week are in — <b>you'll only be asked to join for the part that covers your topic</b>, not the full block.</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn ghost small" onclick="goTo(1)">Start another demo entry →</button>
+      <span></span>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ ADMIN SECTION ============ -->
+<header class="site" id="screen-admin" style="border-top:8px solid var(--wash);">
+  <div class="logo">Omega<span>.</span> <span style="font-size:12px; color:var(--ink-faint); font-weight:400;">Admin</span></div>
+  <div class="nav-crumb"><b>This week</b> — Doubt session scheduling</div>
+</header>
+
+<main>
+  <section class="screen" style="border-bottom:none;">
+    <div class="screen-label">Admin view · The part students never see</div>
+    <h1 class="screen-title">Saturday–Sunday schedule, auto-built</h1>
+    <p class="screen-sub">Every topic request from the week (like Ananya's above) lands here automatically, grouped by course and sequenced by how many students need each topic. Fewer-interest topics run first so no one waits around unnecessarily; popular topics sit at the end where more people are staying anyway.</p>
+
+    <div class="admin-note"><span class="dot"></span> Draft — not yet sent to students</div>
+
+    <!-- NEET Cluster -->
+    <div class="cluster-card">
+      <div class="cluster-head">
+        <div>
+          <div class="stream-name">NEET</div>
+          <div class="stream-meta">4 students · 4 topics requested</div>
+        </div>
+        <div class="slot-time">Sat, 10:00 – 11:20 AM</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">10:00–10:15</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 30%;">Human Physiology (Bio)</div>
+          </div>
+          <div class="timeline-count">1 student</div>
+        </div>
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">10:15–10:35</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 45%;">Current Electricity</div>
+          </div>
+          <div class="timeline-count">2 students</div>
+        </div>
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">10:35–11:00</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 55%;">Genetics &amp; Evolution</div>
+          </div>
+          <div class="timeline-count">3 students</div>
+        </div>
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">11:00–11:20</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 65%; background:#fde8d4; border-color:#f0c493; color:var(--warn);">Electrostatics</div>
+          </div>
+          <div class="timeline-count">4 students</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NDA Cluster -->
+    <div class="cluster-card">
+      <div class="cluster-head">
+        <div>
+          <div class="stream-name">NDA</div>
+          <div class="stream-meta">2 students · 1 topic requested</div>
+        </div>
+        <div class="slot-time">Sat, 11:30 – 11:50 AM</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">11:30–11:50</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 40%;">General Knowledge — Current Affairs</div>
+          </div>
+          <div class="timeline-count">2 students</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Class 10th Cluster -->
+    <div class="cluster-card">
+      <div class="cluster-head">
+        <div>
+          <div class="stream-name">Class 10th</div>
+          <div class="stream-meta">1 student · 1 topic requested</div>
+        </div>
+        <div class="slot-time">Sun, 4:00 – 4:15 PM</div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="drag-handle">⠿</div>
+          <div class="timeline-time">4:00–4:15</div>
+          <div class="timeline-bar-wrap">
+            <div class="timeline-bar" style="flex:0 0 25%;">Trigonometry — Heights &amp; Distances</div>
+          </div>
+          <div class="timeline-count">1 student</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:8px;">
+      <button class="btn ghost small">Reorder manually</button>
+      <button class="btn small">Publish &amp; notify students →</button>
+    </div>
+
+    <div class="legend-note">
+      <b>Reading this view:</b> each block's width reflects roughly how long it'll take given how many students need it. Topics with the fewest students run first, so a student who only needs one thing is done quickly. The admin can drag any row to reorder before publishing — nothing reaches students until "Publish" is pressed, at which point each student is only notified about the slot covering their own topic.
+    </div>
+  </section>
+</main>
+
+<footer class="site">Omega Tutorial</footer>
+
+<!-- Interest nudge modal -->
+<div class="overlay" id="nudgeOverlay">
+  <div class="modal">
+    <div class="modal-icon">👥</div>
+    <h3 id="nudgeTitle">3 other students also booked Electrostatics this week</h3>
+    <p>It's already on this week's schedule. Joining now means it happens together in one session — no extra booking needed on your end. Want in?</p>
+    <div class="modal-actions">
+      <button class="btn ghost" onclick="closeNudge(false)">Not this time</button>
+      <button class="btn" onclick="closeNudge(true)">Yes, count me in</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Screen navigation ----------
+  const crumbMap = {
+    1:'Step 1 — Select your course',
+    2:'Step 2 — Your details',
+    3:'Step 3 — Choose path',
+    '4a':'Step 4 — Enrollment',
+    '4b':'Step 4 — Doubt topics',
+    'confirm-enroll':'Done — Enrollment confirmed',
+    'confirm-doubt':'Done — Doubt session booked'
+  };
+  let selectedStream = 'NEET';
+
+  function goTo(n){
+    document.querySelectorAll('main > .screen').forEach(s => s.style.display = 'none');
+    const el = document.getElementById('screen-' + n);
+    if(el) el.style.display = 'block';
+    document.getElementById('crumb').innerHTML = '<b>' + crumbMap[n].split(' — ')[0] + '</b> — ' + crumbMap[n].split(' — ')[1];
+    window.scrollTo({top: document.querySelector('header.site').offsetHeight, behavior:'smooth'});
+    if(n === '4a'){ document.getElementById('streamName4a').textContent = selectedStream; }
+    if(n === 'confirm-enroll'){
+      document.getElementById('ce-name').textContent = document.getElementById('studentName').value || 'Student';
+      document.getElementById('ce-stream').textContent = selectedStream;
+    }
+    if(n === 'confirm-doubt'){
+      document.getElementById('cd-name').textContent = document.getElementById('studentName').value || 'Student';
+      document.getElementById('cd-stream').textContent = selectedStream;
+    }
+  }
+
+  function selectStream(el, name){
+    document.querySelectorAll('#streamTiles .tile').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedStream = name;
+    const btn = document.getElementById('btn-to-2');
+    btn.disabled = false;
+    btn.removeAttribute('disabled');
+  }
+
+  // ---------- Enrollment mode toggle ----------
+  function setEnrollMode(mode, btn){
+    document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('fullMode').style.display = mode === 'full' ? 'block' : 'none';
+    document.getElementById('chapterMode').style.display = mode === 'chapter' ? 'block' : 'none';
+    document.getElementById('fullModeButtonRow').style.display = mode === 'full' ? 'flex' : 'none';
+  }
+
+  function selectPlan(el){
+    document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // ---------- Chapter checkboxes ----------
+  const chapterPrices = {
+    'Electrostatics':399,'Current Electricity':399,'Laws of Motion':399,
+    'Optics & Wave Motion':399,'Human Physiology (Biology)':349,'Genetics & Evolution (Biology)':349
+  };
+  function toggleChapter(box){
+    box.classList.toggle('checked');
+    updateChapterTotal();
+  }
+  function updateChapterTotal(){
+    const checked = document.querySelectorAll('#chapterMode .checkbox.checked');
+    let total = 0;
+    checked.forEach(c => {
+      const name = c.parentElement.querySelector('.chapter-name').textContent.trim();
+      total += chapterPrices[name] || 0;
+    });
+    document.querySelector('.price-summary .label').textContent = checked.length + ' chapter' + (checked.length===1?'':'s') + ' selected';
+    document.getElementById('chapterTotal').textContent = '₹' + total.toLocaleString('en-IN');
+  }
+
+  // ---------- Doubt session: subject + topic ----------
+  const topicsBySubject = {
+    'Physics': [
+      {name:'Electrostatics', interest:3},
+      {name:'Laws of Motion', interest:0},
+      {name:'Optics & Wave Motion', interest:0},
+      {name:'Current Electricity', interest:1},
+      {name:'Rotational Mechanics', interest:0},
+      {name:'Thermodynamics', interest:0}
+    ],
+    'Chemistry': [
+      {name:'Chemical Bonding', interest:0},
+      {name:'Organic Reactions', interest:0},
+      {name:'Equilibrium', interest:0},
+      {name:'Periodic Table Trends', interest:0}
+    ],
+    'Biology': [
+      {name:'Human Physiology', interest:0},
+      {name:'Genetics & Evolution', interest:2},
+      {name:'Plant Physiology', interest:0},
+      {name:'Cell Structure', interest:0}
+    ],
+    'Zoology': [
+      {name:'Animal Kingdom', interest:0},
+      {name:'Human Reproduction', interest:0}
+    ]
+  };
+  let selectedTopics = [];
+
+  function selectSubject(el, subject){
+    document.querySelectorAll('#screen-4b .tile-grid .tile').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('subjectLabel').textContent = subject;
+    document.getElementById('topicSection').style.display = 'block';
+
+    const grid = document.getElementById('topicGrid');
+    grid.innerHTML = '';
+    topicsBySubject[subject].forEach(t => {
+      const chip = document.createElement('div');
+      chip.className = 'topic-chip';
+      chip.innerHTML = t.name + (t.interest > 0 ? '<span class="interest-badge">' + t.interest + ' already booked this week</span>' : '');
+      chip.onclick = () => handleTopicClick(chip, t);
+      grid.appendChild(chip);
+    });
+  }
+
+  function handleTopicClick(chip, topic){
+    if(chip.classList.contains('selected')){
+      chip.classList.remove('selected');
+      selectedTopics = selectedTopics.filter(x => x !== topic.name);
+      updateDoubtContinue();
+      return;
+    }
+    if(topic.interest > 0){
+      document.getElementById('nudgeTitle').textContent =
+        topic.interest + (topic.interest === 1 ? ' other student has' : ' other students have') + ' also booked ' + topic.name + ' this week';
+      pendingChip = chip;
+      pendingTopic = topic;
+      document.getElementById('nudgeOverlay').classList.add('show');
+    } else {
+      chip.classList.add('selected');
+      selectedTopics.push(topic.name);
+      updateDoubtContinue();
+    }
+  }
+
+  let pendingChip = null, pendingTopic = null;
+  function closeNudge(joined){
+    document.getElementById('nudgeOverlay').classList.remove('show');
+    if(joined && pendingChip){
+      pendingChip.classList.add('selected');
+      selectedTopics.push(pendingTopic.name);
+    }
+    updateDoubtContinue();
+    pendingChip = null; pendingTopic = null;
+  }
+
+  function updateDoubtContinue(){
+    document.getElementById('btn-doubt-continue').disabled = selectedTopics.length === 0;
+    document.getElementById('cd-topics').textContent = selectedTopics.join(', ') || '—';
+  }
+</script>
+
+</body>
+</html>
